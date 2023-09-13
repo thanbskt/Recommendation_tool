@@ -1,0 +1,45 @@
+Thanos Dataiku project
+
+##########################################################################################################################################################################
+The purpose of this project is to create a recommendation tool based on the project from the link:https://blog.dataiku.com/outfit-recommendation-system
+where the author implements an recommendation model based on the polyvore dataset: https://github.com/xthan/polyvore-dataset
+
+In summary the authr get cloth images from the polyvore that can form a proper outfit. Then imports the data using cv2 library and vectorize it.
+Autoencoders are used to get the embeddings from the images. Autoencoders are used for each different category of the cloths in order to capture the 
+essence of the images learn a compressed representation of them that captures their most important features.
+
+After that a prediction model is used to predict the number of likes that comes with every outfit in the dataset. Every image from different category 
+is encoded from the corresponding encoder and the output is delivered to a fully connected layer. Then the outputs from all the layers are merged and deliverd to a 
+fully connected ANN with the output being the predicted number of likes.  
+
+The next step is making recommendations. After we input the clothes we want to get filled with recommendations we get all the combinations of the cloths in 
+the wardrobe and a number of likes is given. The outfits with the best scores are being kept. 
+
+In order to take more diverse outfits we try to cluster the results. We form 3 cluster (or the number of recommended outfits we want to have) and take the best choice 
+for each cluster.
+##########################################################################################################################################################################
+
+
+
+
+First we try to describe and define the schema of the outfits. In our project we have one pieces too 
+The outfits are:
+
+# Form 1:
+#     -Tops
+#     -Bottoms
+#     -Shoes
+#     -Bags
+#     -Accessories
+#     -Outerwear
+    
+# Form 2:
+#     -Onepiece
+#     -Shoes
+#     -Bags
+#     -Accessories
+#     -Outerwear
+
+STEP 1:
+In the first step we try to extract the outfits with the above schema. In order to do it we have to preprocess the polyvore csv file.
+We follow authors stragety and seperate womens clothes from mens and kids maybe. We can achieve that using NLP on the description feature.
