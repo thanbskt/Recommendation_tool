@@ -43,3 +43,15 @@ The outfits are:
 STEP 1:
 In the first step we try to extract the outfits with the above schema. In order to do it we have to preprocess the polyvore csv file.
 We follow authors stragety and seperate womens clothes from mens and kids maybe. We can achieve that using NLP on the description feature.
+
+STEP 2 (OPTIONAL): 
+In this step we try to use encoders to extract features in order to build our prediction model. We use different models according to the category of our items. 
+
+STEP 3: 
+In the third step we build a prediction model with various ways. We try build a model that uses the auto-encoders and encoders features from above, we also build a model wit every image passing through simple CNNs. We will try to improve our model in the future (using tf datasets or maing more flexible in its inputs).
+
+STEP 4:
+In this step we try to implement the recommendation algorithm based on the models. Every model takes as input some cloths items simultaneously (outfit) and predicts a compatibility with range 0-1. Given an item we make all the permutations on all other items and we sort according to their scores keeping the best 3 or 5 outfits. 
+
+
+EXTRA: We provide a file where we build keras models wit multipe inputs.
